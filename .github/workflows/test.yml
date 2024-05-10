@@ -15,13 +15,13 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2 # 设置 pnpm
         with:
-          version: latest # 使用8版本
+          version: 8 # 使用8版本
       - name: Setup Node
         uses: actions/setup-node@v4 # 设置nodejs环境并配置pnpm缓存
         with:
           node-version: '18'
           cache: pnpm
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile # 安装依赖
+        run: pnpm install # 安装依赖
       - name: Run Tests
         run: pnpm run test # 跑单元测试脚本
