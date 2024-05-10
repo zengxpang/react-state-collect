@@ -22,6 +22,6 @@ jobs:
           node-version: '18'
           cache: pnpm
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile --prefer-offline # 安装依赖
+        run: pnpm install --frozen-lockfile # 安装依赖
       - name: Run Tests
         run: pnpm run test # 跑单元测试脚本
