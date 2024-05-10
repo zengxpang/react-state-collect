@@ -11,7 +11,7 @@
     "test": "jest --passWithNoTests --config jest.config.ts",
     "build": "pnpm run -w build:zustand",
     "prepublishOnly": "pnpm run build",
-    "typecheck": "tsc"
+    "typecheck": "tsc" 
   },
   "exports": {
     ".": {

@@ -1,8 +1,8 @@
 const createBabelConfig = require('./babel.config.js')
-const resolve = require('@rollup/plugin-node-resolve')
-const babelPlugin = require('@rollup/plugin-babel')
-const commonjs = require('@rollup/plugin-commonjs')
-const { dts } = require('rollup-plugin-dts')
+const resolve = require('@rollup/plugin-node-resolve') // 用于帮助 Rollup 解析第三方模块的导入。在 JavaScript 中，当你使用 import 语句导入模块时，需要一个机制来定位和加载这些模块。
+const babelPlugin = require('@rollup/plugin-babel') // 用于集成 Babel 编译器到 Rollup 打包过程
+const commonjs = require('@rollup/plugin-commonjs') // 主要作用是将 CommonJS 模块转换为 ES6 模块。这个插件对于处理那些以 CommonJS 格式编写的第三方模块（通常是在 Node.js 环境中使用的模块）非常有用。
+const { dts } = require('rollup-plugin-dts') // 用于处理 TypeScript 的类型声明文件（*.d.ts）
 
 const extensions = ['.ts', '.tsx']
 
@@ -69,9 +69,9 @@ module.exports = (args) => {
   const output = `packages/${packageName}/dist`
 
   return [
-    createDeclarationConfig(input, `${output}/index.d.ts`),
-    createESMConfig(input, `${output}/index.mjs`),
-    createCommonJSConfig(input, `${output}/index.cjs`),
-    createUMDConfig(input, `${output}/index.umd.js`, packageName),
+    createDeclarationConfig(input, `${output}/index.d.ts`), // TypeScript 定义
+    createESMConfig(input, `${output}/index.mjs`), // UMD
+    createCommonJSConfig(input, `${output}/index.cjs`), // CJS
+    createUMDConfig(input, `${output}/index.umd.js`, packageName), // MJS
   ]
 }
